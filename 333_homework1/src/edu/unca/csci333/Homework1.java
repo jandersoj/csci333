@@ -9,9 +9,6 @@ package edu.unca.csci333;
  * Contains and tests a "trinary search" method. 
  */
 
-
-
-
 public class Homework1 {
 
 	/**
