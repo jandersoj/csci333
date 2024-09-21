@@ -1,14 +1,21 @@
 package edu.unca.csci333;
 
-public class MainClass {
+/**
+ * Josie Anderson
+ * 09/20/2024
+ * CSCI333
+ * Homework 3
+ */
 
-//	MainClass will have a main method. In the main method, create several arrays of various Comparable types e.g. Integer or String or others. 
-//	For each array, print out that array, then create a Quicksort object constructed on the array, 
-//	then sort it using one of the thee public quicksort methods discussed above,
-//	then print out your array in main afterward -- the array should now appear sorted. 
-//	Test quicksortRandomized, quicksortBestOfThree, and quicksortNaive each on at least 5 different arrays each. 
-//	Feel free to make helper methods in MainClass if you want.
+/**
+ * Public Main class containing instantiations of new Quicksort objects
+ * and tests of public methods in the Quicksort class.
+ */
+public class MainClass {
 	
+	/**
+	 * Public main method creates and tests Quicksort objects and methods
+	 */
 	public static void main(String[] args) {
 		System.out.println("quicksortNaive:");
 		Integer[] arr1 = new Integer[] {8,41,1,35,32,13,44,7,29,30,9,3,42,43,11,34,22,49,33,39};

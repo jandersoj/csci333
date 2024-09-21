@@ -1,59 +1,84 @@
 package edu.unca.csci333;
 import java.util.*;
 
-//Your Quicksort class should be a Java Generic class that works on secondary type <T extends Comparable<T>>, 
-//so we'll be able to use it to sort an array of any kind of comparable type. Quicksort class should contain:
+/**
+ * Josie Anderson
+ * 09/20/2024
+ * CSCI333
+ * Homework 3
+ */
+
+/**
+ * Public Quicksort class takes an array in the constructor 
+ * and contains methods to sort and print the array.
+ */
 
 public class Quicksort<T extends Comparable<T>> {
 
-//	a private T[ ] data field to store an array
 	private T[] arr;
 	
 	private Random random;
 	
-//	a public constructor that takes a T[ ] parameter and does a shallow copy (just copy the handle) into your T[ ] array data field
+	/**
+	 * Public constructor method to construct a new Quicksort
+	 * @param arrIn The array of values that Quicksort will copy and operate on.
+	 */
 	public Quicksort(T[] arrIn) {
 		this.arr = arrIn;
 		this.random = new Random();
 	}
 	
-//	Quicksort class should also have class methods:
-	
+	/**
+	 * Public method rearranging Quicksort arrays and subproblems so that:
+	 * All elements less than or equal to the element at the end index are placed before it.
+	 * All elements greater than it are placed after it.
+	 *
+	 * @param start The index to select the start of the partitioning interval.
+	 * @param end The index to select the end of the partitioning interval.
+	 * @return The index of the pivot element after being partitioned.
+	 */
 	private int partition(int start, int end) {
-//		which does a partition as we discussed in class, on the subarray from start to end inclusive, using the last element at index end as the pivot.	
 		T pivot = arr[end];
 		int i = start-1;
 		
-		for(int j = start; j < end; j++) { // j is loop variable. Iterate through subarray.
-		   if(arr[j].compareTo(pivot) <= 0) { // we find a “small” value less than the pivot x
+		for(int j = start; j < end; j++) { 
+		   if(arr[j].compareTo(pivot) <= 0) { // if the value is less than the pivot
 		      i++;
-		      swap(i, j); // The “small” element goes left
+		      swap(i, j); //it gets swapped left
 		   }
 		}
 		swap(i+1, end); // put pivot between left and right sides
-		return i+1; // This is the index q in QUICKSORT
+		return i+1; //returns the pivot point as q for quicksort.
 	}
 	
-		
+	/**
+	* Private method that recursively quicksorts the array using the naive method.
+	*
+	* @param start starting index of the sorting interval.
+	* @param end ending index of the sorting interval.
+	*/	
 	private void quicksortNaive(int start, int end) {
-//		a recursive quicksort method with inclusive bounds. It naively uses the subproblem's last element at index end as the pivot. 
-//		Invoke your partition method as a helper method.
-		if(start < end) {  // base case is the implied empty else case
-			int q = partition(start, end); // split 2 subproblems at q
-			quicksortNaive(start, q - 1);
+		if(start < end) {  // base case 
+			int q = partition(start, end); // split into subproblems at q
+			quicksortNaive(start, q - 1); //recursively sort
 			quicksortNaive(q + 1, end);
 		}
 	}
 	
+	/**
+	 * Top level call to quicksort the array with the naive method.
+	 */
 	public void quicksortNaive() {
-//		with 0 params, a wrapper for the top level call of the private quicksortNaive
 		quicksortNaive(0, arr.length-1);
 	}
-	
+		
+	/**
+	* Private method to recursively quicksort the array using the best-of-three method.
+	*
+	* @param start starting index of the sorting interval.
+	* @param end ending index of the sorting interval.
+	*/	
 	private void quicksortBestOfThree(int start, int end) {
-//		a recursive quicksort method with inclusive bounds. 
-//		It chooses its pivot as the median of the three values at index start, index end, and the index halfway between start and end. 
-//		Find that pivot, swap that pivot to index end, then invoke the same partition method.
 		if (start < end) {
 			int pivot = arr[start].compareTo(arr[end]) <= 0 ? start : end;
 			int middle = (end - start) / 2 + start;
@@ -65,16 +90,20 @@ public class Quicksort<T extends Comparable<T>> {
 		}
 	}
 	
+	/**
+	 * Top level call to quicksort the array with the best-of-three method.
+	 */
 	public void quicksortBestOfThree() {
-//		with 0 params, a wrapper for the top level call of the private quicksortBestOfThree
 		quicksortBestOfThree(0, arr.length -1);
 	}
 	
+	/**
+	* Private method to recursively quicksort the array using the randomized method.
+	*
+	* @param start starting index of the sorting interval.
+	* @param end ending index of the sorting interval.
+	*/	
 	private void quicksortRandomized(int start, int end) {
-//		a recursive quicksort method with inclusive bounds. 
-//		It chooses its pivot as a random element of the array between index start and index end, inclusive. 
-//		Find that pivot, swap that pivot to index end, then invoke the same partition method.
-		
 		if (start < end){  // base case is the implied empty else case
 			int rand = random.nextInt(end - start + 1) + start;// random int between p and r inclusive
 			swap(rand, end);
@@ -84,10 +113,16 @@ public class Quicksort<T extends Comparable<T>> {
 		}
 	}
 	
+	/**
+	 * Top level call to quicksort the array with the randomized method.
+	 */
 	public void quicksortRandomized() {
 		quicksortRandomized(0, arr.length -1);
 	}
 
+	/**
+	 * Public method to print the array
+	 */
 	public void printArr() {
 		String str = "[";
 		for(int i = 0; i < arr.length-1; i++) {
@@ -98,6 +133,12 @@ public class Quicksort<T extends Comparable<T>> {
 		System.out.println(str);
 	}
 	
+	/**
+	 * Private method to swap the values at two indices
+	 * 
+	 * @param index1 the first index
+	 * @param index2 the second index
+	 */
 	private void swap(int index1, int index2) {
 		T temp = arr[index1];
 		arr[index1] = arr[index2];
