@@ -1,6 +1,18 @@
 package edu.unca.csci333;
 import java.util.*;
 
+/**
+ * Josie Anderson
+ * 10/27/2024
+ * CSCI333
+ * Homework 
+ */
+
+/**
+ * Public Quickselect class takes an array in the constructor and contains
+ * methods to locate and select a given order statistic from said array.
+ */
+
 public class Quickselect<T extends Comparable<T>> {
 	
 	private T[] arr;

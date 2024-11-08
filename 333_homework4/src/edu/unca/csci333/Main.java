@@ -1,7 +1,19 @@
 package edu.unca.csci333;
-
 import java.util.Arrays;
 import java.util.Random;
+
+/**
+ * Josie Anderson
+ * 10/27/2024
+ * CSCI333
+ * Homework 4
+ */
+
+/**
+ * Public Main class containing instantiations of new Quickselect objects
+ * and tests of public methods in the Quicksort class, as well as a countingSort method 
+ * and tests of it. 
+ */
 
 public class Main {
 			
