@@ -9,7 +9,6 @@ public class ChainedHashTable<T> {
 	private int m;
 	
 //	The constructor should have a parameter for n, the total number of inputs expected. 
-	@SuppressWarnings("unchecked")
 	public ChainedHashTable(int n) {
 //	In the constructor, create the array of size m as the first power of 2 larger than n, 
 //	full of constructed but empty linked lists at each index. 

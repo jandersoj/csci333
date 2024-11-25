@@ -7,44 +7,44 @@ public class BSTNode<T extends Comparable<T>> {
 	private BSTNode<T> left;
 	private BSTNode<T> right;
 //	as well as a data element of Java generic type T such that <T extends Comparable<T>>
-	public T data;
+	private T data;
 	
 //	Implement a constructor method with T parameter. It will set p left and right to NULL, and the data element to the constructor parameter.
 	public BSTNode(T input) {
-		parent = null;
-		left = null;
-		right = null;
-		data = input;
+		this.parent = null;
+		this.left = null;
+		this.right = null;
+		this.data = input;
 	}
 	
 //	Implement getter methods for the data element, p, left, and right, to return the relevant data field.
 	public T getData() {
-		return null;
+		return this.data;
 	}
 	
 	public BSTNode<T> getParent() {
-		return parent;
+		return this.parent;
 	}
 	
 	public BSTNode<T> getLeft() {
-		return left;
+		return this.left;
 	}
 	
 	public BSTNode<T> getRight() {
-		return right;
+		return this.right;
 	}
 	
 //	Implement setter methods for p left and right, to set the relevant data field to the parameter; copy the handle.
 //	 copy the handle???
 	public void setParent(BSTNode<T> input) {
-		parent = input;
+		this.parent = input;
 	}
 	
 	public void setLeft(BSTNode<T> input) {
-		left = input;
+		this.left = input;
 	}
 	
 	public void setRight(BSTNode<T> input) {
-		right = input;
+		this.right = input;
 	}
 }
